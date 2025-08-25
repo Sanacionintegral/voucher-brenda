@@ -17,17 +17,24 @@
       min-height: 100vh;
       color: #5e2c4c;
       overflow-x: hidden;
+      text-align: center;
+    }
+    .mensaje-cumple {
+      font-size: 1.1rem;
+      max-width: 600px;
+      margin: 30px 20px 20px;
+      line-height: 1.6;
     }
     .mensaje-inicial {
-      text-align: center;
+      font-size: 1.4rem;
       margin-bottom: 20px;
-      font-size: 1.3rem;
     }
     .gift-box {
       cursor: pointer;
-      width: 120px;
+      width: 150px;
+      height: auto;
       transition: transform 0.3s ease;
-      animation: pulse 1.8s infinite;
+      animation: pulse 2s infinite;
     }
     .gift-box:hover {
       transform: scale(1.1);
@@ -40,11 +47,10 @@
     #voucher-container {
       display: none;
       margin-top: 30px;
-      text-align: center;
       animation: fadeIn 1.5s ease forwards;
     }
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(30px); }
+      from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
     #voucher-container img {
@@ -61,10 +67,23 @@
   </style>
 </head>
 <body>
-  <div class="mensaje-inicial">
-    <h2>🎁 Brenda, tocá la caja para abrir tu regalo espiritual ✨</h2>
+  <audio autoplay loop>
+    <source src="zen_music.mp3" type="audio/mpeg">
+    Tu navegador no soporta audio HTML5.
+  </audio>
+
+  <div class="mensaje-cumple">
+    ✨🎂 <strong>Feliz Cumpleaños, Brenda</strong> 🎂✨<br>
+    Que esta nueva vuelta al sol te llene de amor, luz y armonía.<br>
+    Este regalo es una invitación a reconectar con tu alma, sanar desde adentro y seguir brillando con tu energía única.<br>
+    Con todo mi cariño, que disfrutes esta experiencia mágica 💖🌈🔮
   </div>
-  <img class="gift-box" src="https://cdn-icons-png.flaticon.com/512/1077/1077012.png" alt="Caja de regalo" onclick="mostrarVoucher()">
+
+  <div class="mensaje-inicial" id="mensaje">
+    🎁 Tocá la caja para abrir tu regalo espiritual
+  </div>
+
+  <img class="gift-box" id="giftBox" src="gift_box.png" alt="Caja de regalo" onclick="mostrarVoucher()">
 
   <div id="voucher-container">
     <img src="voucher_brenda.png" alt="Voucher espiritual">
@@ -78,8 +97,8 @@
 
   <script>
     function mostrarVoucher() {
-      document.querySelector('.gift-box').style.display = 'none';
-      document.querySelector('.mensaje-inicial').style.display = 'none';
+      document.getElementById('giftBox').style.display = 'none';
+      document.getElementById('mensaje').style.display = 'none';
       document.getElementById('voucher-container').style.display = 'block';
     }
   </script>
