@@ -67,11 +67,13 @@
   </style>
 </head>
 <body>
-  <audio autoplay loop>
+  <!-- Música de fondo -->
+  <audio id="audioZen" loop>
     <source src="zen_music.mp3" type="audio/mpeg">
     Tu navegador no soporta audio HTML5.
   </audio>
 
+  <!-- Mensaje de cumpleaños -->
   <div class="mensaje-cumple">
     ✨🎂 <strong>Feliz Cumpleaños, Brenda</strong> 🎂✨<br>
     Que esta nueva vuelta al sol te llene de amor, luz y armonía.<br>
@@ -79,28 +81,42 @@
     Con todo mi cariño, que disfrutes esta experiencia mágica 💖🌈🔮
   </div>
 
+  <!-- Indicador e imagen de caja -->
   <div class="mensaje-inicial" id="mensaje">
     🎁 Tocá la caja para abrir tu regalo espiritual
   </div>
 
   <img class="gift-box" id="giftBox" src="gift_box.png" alt="Caja de regalo" onclick="mostrarVoucher()">
 
+  <!-- Voucher oculto -->
   <div id="voucher-container">
     <img src="voucher_brenda.png" alt="Voucher espiritual">
     <p style="margin-top: 20px; font-size: 18px;">Coordiná tu sesión cuando quieras 💌</p>
     <a style="display:inline-block;background-color:#d86e92;color:white;padding:12px 20px;border-radius:30px;text-decoration:none;font-size:16px;margin-top:10px;" href="https://wa.me/5492235285338?text=Hola%2C%20quiero%20usar%20mi%20voucher%20de%20cumplea%C3%B1os%20espiritual" target="_blank">Hablar por WhatsApp</a>
   </div>
 
+  <!-- Pie de página -->
   <footer>
     Sanación 11.11 - Sesiones a distancia ✨
   </footer>
 
+  <!-- Script funcional -->
   <script>
     function mostrarVoucher() {
       document.getElementById('giftBox').style.display = 'none';
       document.getElementById('mensaje').style.display = 'none';
       document.getElementById('voucher-container').style.display = 'block';
+
+      // Iniciar música al tocar la caja
+      const audio = document.getElementById('audioZen');
+      if (audio && audio.paused) {
+        audio.volume = 0.4;
+        audio.play().catch((e) => {
+          console.log("El navegador bloqueó el autoplay. Se necesita interacción.");
+        });
+      }
     }
   </script>
 </body>
 </html>
+
