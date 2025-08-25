@@ -1,72 +1,87 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Voucher Espiritual para Brenda</title>
+  <title>Tu Regalo Espiritual - Brenda</title>
   <style>
     body {
       margin: 0;
       padding: 0;
       font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(180deg, #3b2d67, #8466b0);
-      color: #fff;
-      text-align: center;
+      background: #fdeff4;
       display: flex;
       flex-direction: column;
-      justify-content: center;
       align-items: center;
+      justify-content: center;
       min-height: 100vh;
-      animation: fadeIn 2s ease;
+      color: #5e2c4c;
+      overflow-x: hidden;
+    }
+    .mensaje-inicial {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 1.3rem;
+    }
+    .gift-box {
+      cursor: pointer;
+      width: 120px;
+      transition: transform 0.3s ease;
+      animation: pulse 1.8s infinite;
+    }
+    .gift-box:hover {
+      transform: scale(1.1);
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+    #voucher-container {
+      display: none;
+      margin-top: 30px;
+      text-align: center;
+      animation: fadeIn 1.5s ease forwards;
     }
     @keyframes fadeIn {
-      from {opacity: 0;}
-      to {opacity: 1;}
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
     }
-    .voucher {
-      max-width: 480px;
-      background: rgba(255,255,255,0.05);
-      padding: 20px;
-      border-radius: 16px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.4);
-    }
-    .voucher img {
+    #voucher-container img {
       width: 100%;
+      max-width: 500px;
       border-radius: 12px;
-    }
-    .btn-whatsapp {
-      margin-top: 20px;
-      display: inline-block;
-      background-color: #25D366;
-      color: white;
-      padding: 12px 20px;
-      font-size: 16px;
-      border: none;
-      border-radius: 30px;
-      text-decoration: none;
-      transition: background-color 0.3s ease;
-    }
-    .btn-whatsapp:hover {
-      background-color: #1ebe5d;
+      box-shadow: 0 0 15px rgba(0,0,0,0.15);
     }
     footer {
-      margin-top: 30px;
-      font-size: 13px;
-      color: #e0caff;
+      margin-top: 40px;
+      font-size: 14px;
+      color: #c58ba5;
     }
   </style>
 </head>
 <body>
-  <div class="voucher">
-    <h2>🎁 ¡Feliz Cumpleaños Brenda!</h2>
-    <p>Este es tu regalo espiritual, especialmente creado para vos 💫</p>
+  <div class="mensaje-inicial">
+    <h2>🎁 Brenda, tocá la caja para abrir tu regalo espiritual ✨</h2>
+  </div>
+  <img class="gift-box" src="https://cdn-icons-png.flaticon.com/512/1077/1077012.png" alt="Caja de regalo" onclick="mostrarVoucher()">
+
+  <div id="voucher-container">
     <img src="voucher_brenda.png" alt="Voucher espiritual">
     <p style="margin-top: 20px; font-size: 18px;">Coordiná tu sesión cuando quieras 💌</p>
-    <a class="btn-whatsapp" href="https://wa.me/5492235285338?text=Hola%2C%20quiero%20usar%20mi%20voucher%20de%20cumplea%C3%B1os%20espiritual" target="_blank">Hablar por WhatsApp</a>
+    <a style="display:inline-block;background-color:#d86e92;color:white;padding:12px 20px;border-radius:30px;text-decoration:none;font-size:16px;margin-top:10px;" href="https://wa.me/5492235285338?text=Hola%2C%20quiero%20usar%20mi%20voucher%20de%20cumplea%C3%B1os%20espiritual" target="_blank">Hablar por WhatsApp</a>
   </div>
+
   <footer>
     Sanación 11.11 - Sesiones a distancia ✨
   </footer>
+
+  <script>
+    function mostrarVoucher() {
+      document.querySelector('.gift-box').style.display = 'none';
+      document.querySelector('.mensaje-inicial').style.display = 'none';
+      document.getElementById('voucher-container').style.display = 'block';
+    }
+  </script>
 </body>
 </html>
